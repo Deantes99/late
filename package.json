@@ -1,11 +1,18 @@
 {
-  "private": true,
   "name": "late",
   "version": "0.9.0",
+  "private": true,
   "description": "Lazy Automatic Time Evaluator",
-  "main": "index.js",
-  "engines": {
-    "node": ">=11.0.0"
+  "author": "Frank Matranga <thefrankmatranga@gmail.com>",
+  "scripts": {
+    "serve": "cross-env PORT=8080 vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test": "npm run lint",
+    "lint": "vue-cli-service lint",
+    "build-dev": "vue-cli-service build --mode development",
+    "dev": "cross-env NODE_ENV=development node index.js",
+    "postinstall": "npm run build",
+    "start": "cross-env NODE_ENV=production node index.js"
   },
   "dependencies": {
     "@sendgrid/mail": "^6.3.1",
@@ -36,6 +43,7 @@
     "node-cron": "^2.0.3",
     "node-ical": "^0.9.0",
     "npm": "^6.6.0",
+    "register-service-worker": "^1.5.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "twilio": "^3.27.1",
@@ -56,6 +64,7 @@
     "@babel/preset-env": "^7.2.3",
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-plugin-eslint": "^3.3.0",
+    "@vue/cli-plugin-pwa": "^3.4.0",
     "@vue/cli-service": "^3.3.0",
     "@vue/eslint-config-prettier": "^3.0.5",
     "cross-env": "^5.2.0",
@@ -72,33 +81,6 @@
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.22"
   },
-  "scripts": {
-    "postinstall": "npm run build",
-    "start": "cross-env NODE_ENV=production node index.js",
-    "dev": "cross-env NODE_ENV=development node index.js",
-    "test": "npm run lint",
-    "serve": "cross-env PORT=8080 vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build-dev": "vue-cli-service build --mode development",
-    "lint": "vue-cli-service lint"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Apexal/late.git"
-  },
-  "keywords": [
-    "school",
-    "time",
-    "schedule",
-    "education",
-    "management"
-  ],
-  "author": "Frank Matranga <thefrankmatranga@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Apexal/late/issues"
-  },
-  "homepage": "https://github.com/Apexal/late#readme",
   "eslintConfig": {
     "root": true,
     "env": {
@@ -191,9 +173,24 @@
     "last 2 versions",
     "not ie <= 8"
   ],
+  "bugs": {
+    "url": "https://github.com/Apexal/late/issues"
+  },
+  "engines": {
+    "node": ">=11.0.0"
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "homepage": "https://github.com/Apexal/late#readme",
+  "keywords": [
+    "school",
+    "time",
+    "schedule",
+    "education",
+    "management"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "*.js": [
       "vue-cli-service lint",
@@ -203,5 +200,10 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Apexal/late.git"
   }
 }

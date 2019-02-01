@@ -9,6 +9,7 @@ import KnobControl from 'vue-knob-control';
 import Toasted from 'vue-toasted';
 
 import 'bulma-tooltip';
+import './registerServiceWorker';
 
 Vue.use(FullCalendar);
 Vue.use(KnobControl);
